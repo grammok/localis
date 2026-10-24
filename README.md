@@ -1,92 +1,78 @@
 # Localis
 
-**Kleine, kostenlose Werkzeuge für Windows – alles bleibt auf Ihrem Computer.**
-
-Localis ist ein privates Hobbyprojekt von grammok – gedacht für Freunde und Bekannte, keine offizielle Software. Diese
-Fassung ist eine **Vorschau**: Es kann noch hier und da haken, und mit Updates ändert sich noch einiges.
+Localis ist eine Sammlung von Werkzeugen für Windows, mit denen sich alltägliche Aufgaben rund um Bilder, Dateien, Texte, Passwörter und Farben erledigen lassen. Ich entwickle es als privates Projekt und gebe es kostenlos an Freunde und Bekannte weiter. Die aktuelle Fassung ist eine Vorschau: Einzelne Abläufe können noch Fehler enthalten, und Funktionen wie Oberfläche entwickeln sich mit den kommenden Updates weiter.
 
 ## Herunterladen
 
-**[Localis für Windows herunterladen](https://github.com/grammok/localis/releases/latest/download/Localis-Setup.exe)**
-(Setup-Datei, ca. 45 MB)
+**[Localis für Windows herunterladen](https://github.com/grammok/localis/releases/latest/download/Localis-Setup.exe)** (Installationsdatei, etwa 45 MB)
 
-- Windows 11, 64 Bit. Windows 10 ab Version 1809 sollte gehen, ist aber nicht getestet.
-- Installiert wird nur für Ihr Benutzerkonto – ohne Administratorrechte.
-- Alle Versionen mit Neuigkeiten und Prüfsummen: [Releases](https://github.com/grammok/localis/releases). Die Einträge
-  „Source code“ dort legt GitHub selbst an – sie werden nicht gebraucht.
+* **Voraussetzung:** Windows 11 mit 64 Bit. Unter Windows 10 ab Version 1809 lässt sich Localis ebenfalls installieren, ist dort aber nicht getestet.
+* **Installation:** nur für dein Benutzerkonto und ohne Administratorrechte, standardmäßig in den Ordner `%LOCALAPPDATA%\Programs\Localis`. Angelegt werden ein Eintrag im Startmenü und auf Wunsch eine Verknüpfung auf dem Desktop; einen Autostart oder Hintergrunddienst richtet Localis nicht ein.
+* **Alle Versionen** mit ihren Neuigkeiten und Prüfsummen stehen unter [Releases](https://github.com/grammok/localis/releases). Die dort aufgeführten Archive „Source code“ erzeugt GitHub automatisch; für die Installation werden sie nicht benötigt.
 
-### Warnungen beim ersten Start
+### Warnungen von Browser und Windows
 
-Localis ist nicht mit einem gekauften Zertifikat signiert. Deshalb warnen Browser und Windows beim ersten Mal:
+Die Installationsdatei ist nicht digital signiert, weil dafür ein kostenpflichtiges Zertifikat nötig wäre, und wird in jeder neuen Version anfangs nur selten heruntergeladen. Browser und Windows stufen sie deshalb zunächst als unbekannt ein:
 
-- Der Browser meldet eventuell, die Datei werde nicht häufig heruntergeladen. Dann „Behalten“ wählen (in Edge über
-  „…“ neben dem Download).
-- Windows zeigt eventuell „Der Computer wurde durch Windows geschützt“. Dann auf „Weitere Informationen“ und
-  „Trotzdem ausführen“ klicken.
+* **Chrome** zeigt gegebenenfalls im Downloadbereich eine entsprechende Warnung. Über „Behalten“ beziehungsweise „Trotzdem herunterladen“ bleibt die Datei erhalten; andere Browser verfahren ähnlich.
+* **Windows SmartScreen** kann beim Öffnen „Der Computer wurde durch Windows geschützt“ melden. Über „Weitere Informationen“ und anschließend „Trotzdem ausführen“ startet die Installation.
 
-Wer sichergehen möchte, dass die Datei unverändert ist, vergleicht vorher die Prüfsumme:
+### Prüfsumme vergleichen
 
-1. PowerShell öffnen (im Startmenü „PowerShell“ eintippen).
-2. Eingeben: `Get-FileHash "$env:USERPROFILE\Downloads\Localis-Setup.exe"`
-3. Der angezeigte Wert muss zur Zeile `Localis-Setup.exe` in der Datei `SHA256SUMS` des
-   [neuesten Release](https://github.com/grammok/localis/releases/latest) passen (Groß- und Kleinschreibung spielen
-   keine Rolle).
+Ob die Datei unverändert bei dir angekommen ist, kannst du vor der Installation anhand ihrer Prüfsumme (SHA256) feststellen:
 
-## Was drin ist
+1. Öffne PowerShell, etwa über die Suche im Startmenü.
+2. Führe den folgenden Befehl aus. Liegt die Datei in einem anderen Ordner, passe den Pfad an.
 
-- **CutOut** – den Hintergrund aus Fotos und Grafiken entfernen, mit Werkzeugen für saubere Umrisse.
-- **ImageBatch** – viele Bilder auf einmal verkleinern, drehen und umwandeln; die Originale bleiben unverändert.
-- **FileRename** – viele Dateien nach Regeln umbenennen, mit Vorschau und „Rückgängig“.
-- **HashTools** – mit Prüfsummen prüfen, ob ein Download oder eine Sicherung unverändert ist.
-- **PasswordGenerator** – sichere Passwörter, Passphrasen und PINs erzeugen, ohne sie zu speichern.
-- **QrTools** – QR-Codes für Text, Links, WLAN, Kontakte und mehr.
-- **TextTools** – Text bereinigen, sortieren, doppelte Zeilen entfernen, suchen und ersetzen.
-- **ColorTools** – Farben vom Bildschirm aufnehmen, umrechnen und als Paletten sammeln.
+   ```powershell
+   Get-FileHash "$env:USERPROFILE\Downloads\Localis-Setup.exe"
+   ```
+
+3. Vergleiche den angezeigten Wert mit der Zeile `Localis-Setup.exe` in der Datei `SHA256SUMS` des [neuesten Releases](https://github.com/grammok/localis/releases/latest). Ob die Buchstaben groß oder klein geschrieben sind, spielt dabei keine Rolle.
+
+## Werkzeuge
+
+* **CutOut** entfernt den Hintergrund aus Fotos und Grafiken. Für schwierige Umrisse stehen Rechteck, „Teil wählen“, Zauberstab und die Pinsel „Zurückholen“, „Entfernen“ und „Feine Kanten“ bereit; bewährte Einstellungen lassen sich als eigenes Profil speichern.
+* **ImageBatch** ändert in einem Durchgang Größe und Format vieler Bilder und dreht oder spiegelt sie bei Bedarf. Die Vorschau zeigt genau die Datei, die entstehen wird. Vorhandene Dateien, die Originale eingeschlossen, überschreibt es nie, und Metadaten wie Aufnahmeort oder Kameramodell übernimmt es nicht.
+* **FileRename** benennt viele Dateien nach kombinierbaren Regeln um, etwa nach Aufnahmedatum, mit fortlaufender Nummer oder durch Ersetzen von Text. Jeder neue Name ist vorab zu sehen, und „Rückgängig“ stellt die alten Namen wieder her.
+* **HashTools** prüft anhand von Prüfsummen, ob ein Download oder eine Sicherung unverändert ist, auch mit Listen wie `SHA256SUMS`, und vergleicht ganze Ordner Byte für Byte. Die geprüften Dateien liest es nur.
+* **PasswordGenerator** erzeugt Passwörter, Passphrasen aus deutschen Wörtern, PINs und Zufallswerte wie Hex, Base64 oder UUID, ausschließlich aus kryptografisch sicherem Zufall. Bei Passwörtern lassen sich einzelne Zeichen ausschließen oder ergänzen. Erzeugte Werte werden nirgends gespeichert. Kopierte Werte gelangen weder in den Verlauf der Zwischenablage noch in die Cloud; Localis entfernt sie nach einer einstellbaren Zeit, spätestens beim Beenden, wieder aus der Zwischenablage, sofern sie noch darin liegen.
+* **QrTools** erzeugt QR-Codes für Texte, Links, WLAN, Kontakte, Mails, Telefonnummern, SMS, Messenger und soziale Netzwerke und speichert sie als PNG oder SVG.
+* **TextTools** bearbeitet Texte in einer festen Folge von Schritten: überflüssige Leerzeichen, leere und doppelte Zeilen entfernen, suchen und ersetzen (auch mit regulären Ausdrücken), Buchstaben groß oder klein schreiben, sortieren und nummerieren.
+* **ColorTools** nimmt Farben vom Bildschirm oder aus Bildern auf, rechnet sie in gängige Schreibweisen von Hex bis OKLCH um, prüft den Kontrast nach WCAG und sammelt Farben in Paletten, die sich in verbreiteten Formaten austauschen lassen.
 
 ## Datenschutz
 
-Localis arbeitet offline: Ihre Dateien bleiben auf Ihrem Computer. Es gibt keine Telemetrie, kein Konto, keine Werbung
-und keine KI. Ins Internet geht Localis nur für Updates – von selbst nur, wenn Sie die automatische Suche einschalten.
-Dabei ruft es eine kleine Datei hier bei GitHub ab; GitHub sieht, wie bei jeder Webseite, Ihre IP-Adresse, den
-Zeitpunkt und welche Datei abgerufen wird. Localis sendet keine Kennung und nichts über Sie oder Ihre Dateien. GitHub
-zählt außerdem, wie oft eine Datei heruntergeladen wurde – nur die Zahl, ohne Namen; sie ist öffentlich abrufbar.
+Localis verarbeitet deine Dateien ausschließlich auf deinem Rechner, benötigt kein Konto und enthält keine Telemetrie; es überträgt weder Dateien noch Einstellungen oder Angaben zur Nutzung. Was Localis selbst speichert, etwa Einstellungen, eigene Profile, Farbpaletten und heruntergeladene Updates, liegt im Ordner `%LOCALAPPDATA%\Localis`. Alle Werkzeuge funktionieren ohne Internetverbindung.
+
+Eine Verbindung ins Internet stellt Localis nur für Updates her: Es ruft bei GitHub eine kleine Datei mit den Angaben zur neuesten Version ab und lädt von dort auch die Installationsdatei eines Updates. Diese Anfragen enthalten weder eine Kennung noch die installierte Version. GitHub sieht dabei, wie bei jedem Abruf aus dem Internet, deine IP-Adresse, den Zeitpunkt und die abgerufene Datei; außerdem zählt GitHub die Downloads jeder Datei und macht diese Zahlen ohne Bezug zu Personen öffentlich abrufbar.
 
 ## Updates
 
-Beim ersten Start fragt Localis einmal, ob es automatisch nach Updates suchen darf (etwa einmal am Tag) oder nur, wenn
-Sie selbst „Jetzt prüfen“ wählen. Ein neues Update erscheint auf der Startseite; geladen und installiert wird es erst
-auf Ihren Klick. Updates sind abgesichert: Localis installiert nur, was zu einer mit meinem Schlüssel signierten
-Update-Information passt (Größe und Prüfsumme).
+Beim ersten Start fragt Localis auf der Startseite, ob es automatisch nach Updates suchen soll oder nur, wenn du in den Einstellungen „Jetzt prüfen“ wählst; bis zu deiner Antwort stellt es keine Verbindung her. Die automatische Suche prüft etwa einmal am Tag, solange Localis geöffnet ist. Unter Einstellungen → Updates lässt sich die Wahl jederzeit ändern.
 
-In den Einstellungen unter „Updates“ bitte **„Stabile Versionen“** lassen. Die Testfassungen (Beta) sind nur zum
-Mittesten gedacht und können Fehler enthalten.
+Ein verfügbares Update erscheint mit seinen Neuigkeiten auf der Startseite. Heruntergeladen wird es erst auf deinen Klick, installiert erst nach deiner Bestätigung. Localis schließt sich dafür und startet danach neu; deine Einstellungen und alles, was du in Localis angelegt hast, bleiben erhalten. Die Angaben zu jeder Version, darunter Größe und Prüfsumme der Installationsdatei, signiere ich mit einem Schlüssel, der nicht auf GitHub liegt. Localis prüft diese Signatur, bevor es ein Update anbietet, und vergleicht die heruntergeladene Datei vor der Installation mit den signierten Angaben; bei jeder Abweichung wird nichts installiert.
+
+Bei „Versionen“ in denselben Einstellungen sollte „Stabile Versionen“ gewählt bleiben. Testfassungen (Beta) enthalten neue Funktionen schon vor ihrer Freigabe und sind entsprechend weniger erprobt.
 
 ## Deinstallieren
 
-Windows-Einstellungen → Apps → Installierte Apps → Localis → Deinstallieren. Dabei fragt Localis, ob Ihre Einstellungen
-und selbst angelegten Farbpaletten mit entfernt werden sollen (vorgewählt: „Nein“, sie bleiben).
+Öffne in Windows Einstellungen → Apps → Installierte Apps, wähle bei Localis das Menü „…“ und dann „Deinstallieren“. Entfernt werden das Programm, seine Verknüpfungen und heruntergeladene Updates. Anschließend fragt die Deinstallation, ob auch Einstellungen, eigene Profile und Farbpaletten gelöscht werden sollen; vorgewählt ist „Nein“, damit eine spätere Installation sie weiterverwenden kann. Dateien, die du mit Localis in eigenen Ordnern gespeichert hast, bleiben in jedem Fall erhalten.
 
 ## Bekannte Grenzen
 
-- Nur auf Deutsch.
-- Nicht signiert – daher die Warnungen oben.
-- Vorschau: Es kann noch Fehler geben.
-- CutOut: Bei Autos und unruhigem Hintergrund braucht es oft noch Handarbeit (Rechteck, „Teil wählen“, Pinsel).
-- Ersetzen beim Speichern: Wählen Sie, dass eine vorhandene Datei ersetzt wird (Rückfrage von Windows beim Speichern, in
-  CutOut auch die Einstellung „Früheres Ergebnis ersetzen“), wird sie endgültig überschrieben – nicht über den
-  Papierkorb. Das gilt für alle Werkzeuge; ImageBatch ersetzt nie.
-- FileRename: zuerst mit der Kopie eines Ordners ausprobieren; „Rückgängig“ geht nur, bis Localis geschlossen wird.
-- HEIC- und AVIF-Fotos (z. B. vom iPhone) liest Localis nur mit den passenden Bilderweiterungen von Windows.
-- Auf Dienst- oder Firmenrechnern bitte nur mit Erlaubnis Ihrer IT installieren.
+* Localis gibt es derzeit nur auf Deutsch.
+* CutOut arbeitet mit klassischen Verfahren der Bildverarbeitung, nicht mit KI. Bei Autos und unruhigem Hintergrund ist deshalb oft Nacharbeit von Hand nötig.
+* Ungefragt überschreibt Localis keine Datei. Lässt du jedoch eine vorhandene Datei ersetzen, sei es über die Rückfrage von Windows beim Speichern oder in CutOut über die Einstellung „Früheres Ergebnis ersetzen“, wird sie endgültig überschrieben und nicht in den Papierkorb verschoben.
+* FileRename ändert die Namen der Dateien direkt, und „Rückgängig“ steht nur zur Verfügung, bis Localis geschlossen wird. Probiere es deshalb zuerst an der Kopie eines Ordners aus.
+* Fotos im Format HEIC (etwa vom iPhone) oder AVIF liest Localis nur, wenn die nötigen Erweiterungen von Windows aus dem Microsoft Store installiert sind: die Bilderweiterung für HEIF und zusätzlich die Videoerweiterung für HEVC beziehungsweise AV1. Fehlt eine davon, nennt Localis sie beim Öffnen mit Namen.
 
 ## Rückmeldungen
 
-Fehler gefunden oder eine Idee? Sagen Sie mir gern direkt Bescheid – auf dem Weg, auf dem Sie den Link bekommen haben,
-am besten mit einem Bildschirmfoto und der Version (Einstellungen → Über Localis).
+Ich freue mich über jede Rückmeldung, ganz gleich, worum es geht: Ideen für völlig neue Werkzeuge oder Bereiche, Vorschläge zur Verbesserung bestehender Funktionen, Fehler oder Stellen, an denen die Bedienung unklar ist. Welche Werkzeuge bereits geplant sind, zeigt der Abschnitt „Was noch kommt“ auf der Startseite von Localis.
+
+Schreib mir am besten direkt auf dem Weg, über den du den Link zu dieser Seite bekommen hast. Hilfreich sind die Versionsnummer (Einstellungen → Über Localis) und bei Fehlern ein Bildschirmfoto.
 
 ## Hinweise
 
-Localis ist ein privates, kostenloses Hobbyprojekt – ohne Gewähr, die Nutzung erfolgt auf eigene Verantwortung.
-Localis überschreibt Originale nie ungefragt; sichern Sie wichtige Dateien trotzdem, bevor Sie sie bearbeiten. Die
-Setup-Datei darf nur unverändert und kostenlos weitergegeben werden. Localis enthält Bestandteile anderer Hersteller
-unter deren eigenen Lizenzen; die Texte liegen nach der Installation im Programmordner im Ordner „licenses“.
+Localis wird ohne Gewähr bereitgestellt; die Nutzung erfolgt auf eigene Verantwortung. Sichere wichtige Dateien, bevor du sie bearbeitest, und installiere Localis auf beruflich genutzten Rechnern nur mit Zustimmung der zuständigen IT. Die Installationsdatei darf nur unverändert und unentgeltlich weitergegeben werden. Localis enthält Bestandteile anderer Hersteller, die unter ihren eigenen Lizenzen stehen. Die Lizenztexte liegen nach der Installation im Programmordner im Unterordner `licenses`, wo die Datei `LIESMICH.txt` eine Übersicht aller Bestandteile gibt.
