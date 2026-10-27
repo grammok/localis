@@ -32,8 +32,11 @@ Ob die Datei unverändert bei dir angekommen ist, kannst du vor der Installation
 
 ## Werkzeuge
 
+Jedes Werkzeug erklärt sich selbst: Über „?“ oben rechts oder mit F1 öffnet sich eine kurze Anleitung mit allen Tastenkürzeln.
+
 * **CutOut** entfernt den Hintergrund aus Fotos und Grafiken. Für schwierige Umrisse stehen Rechteck, „Teil wählen“, Zauberstab und die Pinsel „Zurückholen“, „Entfernen“ und „Feine Kanten“ bereit; bewährte Einstellungen lassen sich als eigenes Profil speichern.
 * **ImageBatch** ändert in einem Durchgang Größe und Format vieler Bilder und dreht oder spiegelt sie bei Bedarf. Die Vorschau zeigt genau die Datei, die entstehen wird. Vorhandene Dateien, die Originale eingeschlossen, überschreibt es nie, und Metadaten wie Aufnahmeort oder Kameramodell übernimmt es nicht.
+* **SketchTools** verwandelt Fotos und Bilder in schwarzweiße Zeichnungen, wahlweise als Bleistift, Skizze, Graphit, Kohle, Tusche, Comic, Schraffur oder Punkte. Linien und Schatten stammen aus dem Bild selbst und werden mit klassischer Bildverarbeitung berechnet. Der Hintergrund kann weiß, papierfarben oder durchsichtig sein; mit CutOut freigestellte Motive ergeben so saubere Strichzeichnungen. Gespeichert wird eine neue Datei, das Original bleibt unverändert.
 * **FileRename** benennt viele Dateien nach kombinierbaren Regeln um, etwa nach Aufnahmedatum, mit fortlaufender Nummer oder durch Ersetzen von Text. Jeder neue Name ist vorab zu sehen, und „Rückgängig“ stellt die alten Namen wieder her.
 * **HashTools** prüft anhand von Prüfsummen, ob ein Download oder eine Sicherung unverändert ist, auch mit Listen wie `SHA256SUMS`, und vergleicht ganze Ordner Byte für Byte. Die geprüften Dateien liest es nur.
 * **PasswordGenerator** erzeugt Passwörter, Passphrasen aus deutschen Wörtern, PINs und Zufallswerte wie Hex, Base64 oder UUID, ausschließlich aus kryptografisch sicherem Zufall. Bei Passwörtern lassen sich einzelne Zeichen ausschließen oder ergänzen. Erzeugte Werte werden nirgends gespeichert. Kopierte Werte gelangen weder in den Verlauf der Zwischenablage noch in die Cloud; Localis entfernt sie nach einer einstellbaren Zeit, spätestens beim Beenden, wieder aus der Zwischenablage, sofern sie noch darin liegen.
@@ -63,6 +66,7 @@ Bei „Versionen“ in denselben Einstellungen sollte „Stabile Versionen“ ge
 
 * Localis gibt es derzeit nur auf Deutsch.
 * CutOut arbeitet mit klassischen Verfahren der Bildverarbeitung, nicht mit KI. Bei Autos und unruhigem Hintergrund ist deshalb oft Nacharbeit von Hand nötig.
+* SketchTools zeichnet nach, was im Bild zu sehen ist; neue Details oder den Stil eines bestimmten Künstlers erzeugt es nicht. Bilder mit mehr als 4000 Pixeln an der langen Seite werden dafür verkleinert.
 * Ungefragt überschreibt Localis keine Datei. Lässt du jedoch eine vorhandene Datei ersetzen, sei es über die Rückfrage von Windows beim Speichern oder in CutOut über die Einstellung „Früheres Ergebnis ersetzen“, wird sie endgültig überschrieben und nicht in den Papierkorb verschoben.
 * FileRename ändert die Namen der Dateien direkt, und „Rückgängig“ steht nur zur Verfügung, bis Localis geschlossen wird. Probiere es deshalb zuerst an der Kopie eines Ordners aus.
 * Fotos im Format HEIC (etwa vom iPhone) oder AVIF liest Localis nur, wenn die nötigen Erweiterungen von Windows aus dem Microsoft Store installiert sind: die Bilderweiterung für HEIF und zusätzlich die Videoerweiterung für HEVC beziehungsweise AV1. Fehlt eine davon, nennt Localis sie beim Öffnen mit Namen.
